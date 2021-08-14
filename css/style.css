@@ -1,0 +1,202 @@
+:root{
+  --color--body: #abf0ed;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+*, *::after, *::before{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Roboto Mono', monospace;
+  background: linear-gradient(135deg, rgb(0, 255, 149) 0%, rgb(0, 128, 122) 100%);
+}
+
+form{
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.125);
+  border-radius: 10px;
+  width: 500px;
+  display: grid;
+  grid-template-rows: repeat(4, 104px);
+  padding: 40px 45px 30px;
+  border-radius: 16px;
+  position: relative;
+  
+}
+
+form::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 150px;
+  background: linear-gradient(65deg, #16d9e7, #5ef9a4);
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+} 
+
+.pseudo__container{
+  margin-top: 20px;
+}
+
+.confirm__container{
+  margin-top: -10px;
+}
+
+.email__container{
+  margin-top: 10px;
+}
+
+.icons {
+  position: absolute;
+  cursor: pointer;
+}
+
+.icons:hover{
+  color: brown;
+}
+
+.icons--password, .icons--confirm{
+  top: 23px;
+  right: 30px;
+}
+
+#eye__slach__top{
+  display: none;
+}
+#eye__slash__bottom{
+  display: none;
+}
+
+.far{
+  position: absolute;
+}
+
+.pseudo__container, .confirm__container, .password__container, .email__container{
+  position: relative;
+}
+
+.label__pseudo, .label__email, .label__password, .label__confirm{
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+}
+
+.pseudo{
+  color: #162be7;
+  transform: translateY(-40px);
+  left: 5px;
+  
+}
+
+label {
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+input[type="text"], input[type="password"]{
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  padding-left: 10px;
+  outline: none;
+  border: 1px solid transparent;
+  background: #f1f1f12c;
+  transition: 0.2s;
+  font-size: 1.1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+} 
+
+input[type="submit"] {
+  border: none;
+  background: linear-gradient(65deg, #16d9e7, #5ef9a4);
+  width: 50%;
+  margin: 10px auto 0;
+  padding: 10px;
+  border-radius: 150px;
+  font-size: 1.2rem;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.5s ease;
+} 
+
+input[type="submit"]:hover {
+  transform: translateX(2px);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border: 1px solid #5ef9a4;
+}
+
+.confirm__container{
+  margin-top: 20px;
+}
+
+.error span{
+  visibility: visible;
+  opacity: 1;
+  display: flex;
+}
+
+.error span, .error input{
+  color: red;
+}
+.error input {
+  border: 1px solid rgba(255, 0, 0, 0.527);
+}
+
+p {
+  width: 33%;
+  height: 5px;
+  margin: 5px 0 3px;
+  border-radius: 50px;
+  visibility: hidden;
+  transition: 0.1s;
+}
+
+.progressRed, .progressBlue, .progressGreen {
+  visibility: visible;
+  border-radius: 30px;
+  height: 5px;
+  transition: 0.3s ease-in-out;
+}
+p, .progressRed {
+  background: red;
+}
+.progressRed {
+  width: 33%;
+}
+
+.progressBlue {
+  background: aqua;
+  width: 67%;
+}
+
+.progressGreen {
+  background: green;
+  width: 100%;
+}
+
+.display{
+  display: none;
+  color: black;
+}
+
+.visible{
+  display: initial;
+  color: brown
+}
