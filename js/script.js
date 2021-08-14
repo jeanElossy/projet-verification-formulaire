@@ -1,21 +1,30 @@
 
 const inputs = document.querySelectorAll("input[type='text'], input[type='password']");
+
 const form = document.querySelector("form");
+
 const eyeTop = document.getElementById("eye__top");
+
 const eyeSlashTop= document.getElementById("eye__slach__top");
+
 const eyeBottom = document.getElementById("eye__bottom");
+
 const eyeSlashBottom= document.getElementById("eye__slash__bottom");
 
-const labelPseudo = document.getElementById("pseudo");
-const labelEmail = document.getElementById("email");
-const labelPassword = document.getElementById("password");
-const labelConfirm = document.getElementById("confirm");
+const progressBar = document.getElementById("progress__bar");
 
 //creer des variables de stockage dans la base de donnée mais dans notre cas je vais stocker les données dans la console.
 let pseudo, email, password, confirmPass;
-// faire evoluer la bar de progression il faut d'abord la pointer
-const progressBar = document.getElementById("progress__bar");
 
+
+document.querySelectorAll("label").forEach((label) => label.addEventListener("click", topLabel));
+function topLabel(){
+  this.classList.add("pseudo");
+}
+inputs.forEach((input) => input.addEventListener("click", inputClick));
+function inputClick(){
+  this.previousElementSibling.classList.add("pseudo");
+}
 
 // verification de champs de formulaire
 const errorDisplay = (tag, message, valid) => {
@@ -35,88 +44,52 @@ const errorDisplay = (tag, message, valid) => {
 // verification du champs pseudo
 const pseudoChecker = (value) => {
   if(value.length > 0 && (value.length < 3 || value.length > 20)){
-    errorDisplay(
-      "pseudo", 
-      "Doit faire entre 3 et 20 caractères"
-      );
+    errorDisplay("pseudo", "Doit faire entre 3 et 20 caractères");
     // valeur a stocker = null si jamais on est dans cette condition
     pseudo = null;
   }else if(!value.match(/^[a-zA-Z0-9_.-]*$/)){
-    errorDisplay(
-      "pseudo",
-      "Contenir de caractères spéciaux"
-    );
+    errorDisplay("pseudo", "Contenir de caractères spéciaux");
     // valeur a stocker = null si jamais on est dans cette condition
     pseudo = null;
   }else{
-    errorDisplay(
-      "pseudo", 
-      "Pseudo validé", 
-      true
-    );
-    //stockage de donnée apres validation des données
-    pseudo = value;
+    errorDisplay("pseudo", "", true);
   }
   if((value === "")){
-    errorDisplay(
-      "pseudo",
-      ""
-    );
+    errorDisplay("pseudo", "");
   }
+   //stockage de donnée apres validation des données
+  pseudo = value;
 };
 
 // verification du champs email
 const emailChecker = (value) => {
   if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
-    errorDisplay(
-      "email",
-      "Le mail n'est pas validé"
-    );
+    errorDisplay("email", "Le mail n'est pas validé");
     email = null;
   }else{
-    errorDisplay(
-      "email",
-      "mail validé",
-      true
-    );
-    email = value;
+    errorDisplay("email", "", true); 
   }
   if((value === "")){
-    errorDisplay(
-      "email",
-      ""
-    );
+    errorDisplay("email", "");
   }
-  email = null;
+  email = value;
 };
 
 // verification du champs password
 const passwordChecker = (value) => {
   progressBar.classList = "";
-
   //regex de verification de mot de passe contenant 1Maj, 8   caracteres, 1 caract special, 1 chiffre
   if(!value.match(/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\w]){1,})(?!.*\s).{8,}$/)){
-    errorDisplay(
-      "password",
-      "Contenir 1Maj, 8 caracteres, 1 caractère special, 1 chiffre"
-    );
+    errorDisplay( "password", "Contenir 1Maj, 8 caracteres, 1 caractère special, 1 chiffre");
     progressBar.classList.add("progressRed");
     password = null;
   }else if(value.length < 12){
     progressBar.classList.add("progressBlue");
-    errorDisplay(
-      "password",
-      "Mot de passe bon !",
-      true
-    );
+    errorDisplay("password", "", true);
     password = value;
   }else{
+    errorDisplay("password", "", true);
     progressBar.classList.add("progressGreen");
-    errorDisplay(
-      "password",
-      "Mot de passe excellent",
-      true
-    );
     password = value;
   }
   if(confirmPass){
@@ -125,38 +98,25 @@ const passwordChecker = (value) => {
   // faire disparaitre la bar de progression quand le contenu du champs password est vide
   if((value === "")){
     progressBar.classList = "";
-    errorDisplay(
-      "password",
-      ""
-    );
+    errorDisplay("password", "");
   }
 };
 
 // verification du champs confirmPass
 const confirmChecker = (value) => {
   if (value !== password) {
-    errorDisplay(
-      "confirm",
-      "Les mots de passe ne sont pas identiquent"
-    );
+    errorDisplay("confirm", "Les mots de passe ne sont pas identiquent");
     confirmPass = false;
   }else{
-    errorDisplay(
-      "confirm",
-      "Mot de passe identiquent",
-      true
-    );
-    confirmPass = true;
+    errorDisplay("confirm", "", true);
   }
   if((value === "")){
-    errorDisplay(
-      "confirm",
-      " "
-    );
+    errorDisplay("confirm", "");
   }
+  confirmPass = true;
 };
 
-// executer cet even sur chaque input en fonction de l'input qui sera utilisé
+// executer cet even et les fonctions sur chaque input en fonction de l'input qui sera utilisé grace a leur ID
 inputs.forEach((input) => input.addEventListener("input", (e) => {
   switch(e.target.id){
     case "pseudo":
@@ -180,7 +140,6 @@ inputs.forEach((input) => input.addEventListener("input", (e) => {
 // envoie du formulaire 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-
   if(pseudo && email && password && confirmPass){
     // on regroupe tous dans un objet
     const data = {
@@ -201,6 +160,7 @@ form.addEventListener("submit", (e) => {
     password = null;
     confirmPass = null;
     alert("Inscription validé !"); 
+    document.querySelectorAll("label").forEach((label) => label.classList.remove("pseudo"));
   }else{
     alert("Veuillez remplir correctement tous les champs !");
   }
@@ -228,19 +188,6 @@ window.onload = () => {
     eyeSlashBottom.style.display = "none";
     eyeSlashBottom.previousElementSibling.style.display = "initial";
     eyeSlashBottom.parentElement.previousElementSibling.type = "password";
-  }); 
-
-  labelPseudo.addEventListener("click", () => {
-    labelPseudo.previousElementSibling.classList.add("pseudo");
-  });
-  labelEmail.addEventListener("click", () => {
-    labelEmail.previousElementSibling.classList.add("pseudo");
-  });
-  labelPassword.addEventListener("click", () => {
-    labelPassword.previousElementSibling.classList.add("pseudo");
-  });
-  labelConfirm.addEventListener("click", () => {
-    labelConfirm.previousElementSibling.classList.add("pseudo");
   });
 };
 

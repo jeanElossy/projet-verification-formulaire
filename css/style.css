@@ -23,13 +23,12 @@ body{
 form{
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.125);
   border-radius: 10px;
-  width: 500px;
+  width: 50%;
   display: grid;
   grid-template-rows: repeat(4, 104px);
   padding: 40px 45px 30px;
   border-radius: 16px;
   position: relative;
-  
 }
 
 form::after {
@@ -67,7 +66,7 @@ form::after {
 }
 
 .icons--password, .icons--confirm{
-  top: 23px;
+  top: 18px;
   right: 30px;
 }
 
@@ -86,25 +85,21 @@ form::after {
   position: relative;
 }
 
-.label__pseudo, .label__email, .label__password, .label__confirm{
-  position: absolute;
-  top: 5px;
-  left: 15px;
-  transition: .3s ease-in-out;
-  cursor: pointer;
-}
-
 .pseudo{
   color: #162be7;
   transform: translateY(-40px);
   left: 5px;
-  
 }
 
 label {
   letter-spacing: 1px;
   font-size: 1.2rem;
   margin-top: 10px;
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  transition: .2s ease-in-out;
+  cursor: pointer;
 }
 
 input[type="text"], input[type="password"]{
@@ -143,7 +138,7 @@ input[type="password"]:focus {
 }
 
 .confirm__container{
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .error span{
