@@ -3,6 +3,7 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
 *, *::after, *::before{
   margin: 0;
@@ -73,6 +74,7 @@ form::after {
 #eye__slach__top{
   display: none;
 }
+
 #eye__slash__bottom{
   display: none;
 }
@@ -86,9 +88,10 @@ form::after {
 }
 
 .pseudo{
-  color: #162be7;
   transform: translateY(-40px);
-  left: 5px;
+  left: 3px;
+  text-shadow: 0 0 4px #04173567;
+  color: #15097e;
 }
 
 label {
@@ -100,6 +103,10 @@ label {
   left: 15px;
   transition: .2s ease-in-out;
   cursor: pointer;
+}
+
+label, input[type="submit"]{
+  text-shadow: 0 0 3.5px #09454bc7;
 }
 
 input[type="text"], input[type="password"]{
@@ -130,11 +137,15 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   transform: translateX(2px);
+   background: #04ecbaab;
+  box-shadow: inset 4px 4px 4px #b0b0b0, inset -3px -3px 3px #ffffffce;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-  border: 1px solid #5ef9a4;
+  border-radius: 15px;
+  background: #04ecbaab;
+  box-shadow: inset 4px 4px 4px #b0b0b0, inset -3px -3px 3px #ffffffce;
 }
 
 .confirm__container{
@@ -143,8 +154,9 @@ input[type="password"]:focus {
 
 .error span{
   visibility: visible;
-  opacity: 1;
-  display: flex;
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
 .error span, .error input{
