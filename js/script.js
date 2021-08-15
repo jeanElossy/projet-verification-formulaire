@@ -13,14 +13,14 @@ document.querySelectorAll("label").forEach((label) => {
   label.addEventListener("click", topLabel);
 });
 function topLabel(){
-  this.classList.add("pseudo");
+  this.classList.add("label");
 }
 
 inputs.forEach((input) => {
   input.addEventListener("click", inputClick);
 });
 function inputClick(){
-  this.previousElementSibling.classList.add("pseudo");
+  this.previousElementSibling.classList.add("label");
 }
 
 // verification de champs de formulaire
@@ -222,7 +222,7 @@ form.addEventListener("submit", (e) => {
     password = null;
     confirmPass = null;
     alert("Inscription validé !"); 
-    document.querySelectorAll("label").forEach((label) => label.classList.remove("pseudo"));
+    document.querySelectorAll("label").forEach((label) => label.classList.remove("label"));
   }
   else{
     alert(

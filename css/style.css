@@ -46,15 +46,15 @@ form::after {
 } 
 
 .pseudo__container{
-  margin-top: 20px;
+  margin: 23px 0;
 }
 
 .confirm__container{
-  margin-top: -10px;
+  margin-top: 30px;
 }
 
-.email__container{
-  margin-top: 10px;
+.email__container, .password__container{
+  margin-top: 25px;
 }
 
 .icons {
@@ -87,20 +87,19 @@ form::after {
   position: relative;
 }
 
-.pseudo{
-  transform: translateY(-40px);
-  left: 3px;
+.label{
+  transform: translateY(-37px);
   text-shadow: 0 0 4px #04173567;
   color: #15097e;
 }
 
 label {
   letter-spacing: 1px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-top: 10px;
   position: absolute;
   top: 5px;
-  left: 15px;
+  left: 10px;
   transition: .2s ease-in-out;
   cursor: pointer;
 }
@@ -148,10 +147,6 @@ input[type="password"]:focus {
   box-shadow: inset 4px 4px 4px #b0b0b0, inset -3px -3px 3px #ffffffce;
 }
 
-.confirm__container{
-  margin-top: 10px;
-}
-
 .error span{
   visibility: visible;
   font-family: 'Caveat', cursive;
@@ -170,7 +165,7 @@ p {
   width: 33%;
   height: 5px;
   margin: 5px 0 3px;
-  border-radius: 50px;
+  border-radius: 100px;
   visibility: hidden;
   transition: 0.1s;
 }
