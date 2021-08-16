@@ -18,7 +18,7 @@ body{
   align-items: center;
   height: 100vh;
   font-family: 'Roboto Mono', monospace;
-  background: linear-gradient(135deg, rgb(0, 255, 149) 0%, rgb(0, 128, 122) 100%);
+  background: linear-gradient(135deg, rgba(160, 245, 209, 0.726) 0%, rgb(213, 236, 235) 100%);
 }
 
 form{
@@ -30,6 +30,7 @@ form{
   padding: 40px 45px 30px;
   border-radius: 16px;
   position: relative;
+  background: #f1f1f1;
 }
 
 form::after {
@@ -119,6 +120,7 @@ input[type="text"], input[type="password"]{
   transition: 0.2s;
   font-size: 1.1rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border: 0.1px solid #a3a2a236;
 } 
 
 input[type="submit"] {
@@ -136,8 +138,8 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   transform: translateX(2px);
-   background: #04ecbaab;
-  box-shadow: inset 4px 4px 4px #b0b0b0, inset -3px -3px 3px #ffffffce;
+  background: #04ecbaab;
+  box-shadow: inset 4px 4px 4px #b0b0b0, inset -5px -4px 4px #ffffffce;
 }
 
 input[type="text"]:focus,
