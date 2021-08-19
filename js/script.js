@@ -9,18 +9,17 @@ window.onload = () => {
   eyeBottom();
 };
 
-document.querySelectorAll("label").forEach((label) => {
-  label.addEventListener("click", topLabel);
-});
-function topLabel(){
-  this.classList.add("label");
-}
-
 inputs.forEach((input) => {
-  input.addEventListener("click", inputClick);
+  input.addEventListener("input", inputClick);
 });
-function inputClick(){
-  this.previousElementSibling.classList.add("label");
+function inputClick(e){
+  if(this.value !== "")
+  {
+    this.parentElement.classList.add("active-input");
+    
+  }else if(this.value === ""){
+    this.parentElement.classList.remove("active-input");
+  }
 }
 
 // verification de champs de formulaire
@@ -66,12 +65,13 @@ const pseudoChecker = (value) => {
     pseudo = value;
   }
   if((value === ""))
-    {
-    errorDisplay(
-      "pseudo", 
-      ""
-      );
-    }
+  {
+  errorDisplay(
+    "pseudo", 
+    ""
+    );
+  changeInput();
+  }
 };
 
 // verification du champs email
@@ -97,7 +97,8 @@ const emailChecker = (value) => {
     errorDisplay(
       "email", 
       ""
-      );
+    );
+
   }
 };
 
@@ -111,7 +112,7 @@ const passwordChecker = (value) => {
     {
     errorDisplay(
       "password", 
-      "le mot de passe doit contenir 1Maj, 8caracteres, 1caractère special, 1chiffre"
+      "Doit contenir 1Maj, 8caracteres, 1chiffre"
       );
     progressBar.classList.add("progressRed");
     password = null;

@@ -2,8 +2,8 @@
   --color--body: #abf0ed;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap');
 
 *, *::after, *::before{
   margin: 0;
@@ -17,27 +17,39 @@ body{
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Montserrat', sans-serif;
   background: linear-gradient(135deg, rgba(160, 245, 209, 0.726) 0%, rgb(213, 236, 235) 100%);
 }
 
 form{
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0 5px 1px rgba(134, 134, 134, 0.068);
   border-radius: 10px;
-  width: 50%;
+  width: 620px;
+  height: 400px;
   display: grid;
-  grid-template-rows: repeat(4, 104px);
-  padding: 40px 45px 30px;
+  grid-template-rows: repeat(3, 100px);
+  grid-template-columns: repeat(2, 250px);
+  grid-template-areas: 
+  "i1 i2"
+  "i3 i4"
+  "sub sub";
+  gap: 30px 50px;
+  padding: 40px 35px;
   border-radius: 16px;
   position: relative;
   background: #f1f1f1;
 }
 
-form::after {
-  content: "";
+.fa-users{
+  font-size: 1.7rem;
+  color: white;
+}
+.element__top{
   position: absolute;
   width: 60px;
   height: 60px;
+  text-align: center;
+  padding-top: 15px;
   border-radius: 150px;
   background: linear-gradient(65deg, #16d9e7, #5ef9a4);
   top: -30px;
@@ -46,16 +58,26 @@ form::after {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 } 
 
+.pseudo__container, .email__container{
+  margin: 40px 0;
+}
+
 .pseudo__container{
-  margin: 23px 0;
+  grid-area: i1;
+}
+  
+.email__container{
+  grid-area: i2;
 }
 
 .confirm__container{
   margin-top: 30px;
+  grid-area: i4;
 }
 
-.email__container, .password__container{
-  margin-top: 25px;
+.password__container{
+  margin-top: 27px;
+  grid-area: i3;
 }
 
 .icons {
@@ -88,26 +110,27 @@ form::after {
   position: relative;
 }
 
+.label--anim:focus-within label,
+.active-input label{
+  top: -28px;
+}
+
 .label{
   transform: translateY(-37px);
-  text-shadow: 0 0 4px #04173567;
-  color: #15097e;
+  color: #030214;
 }
 
 label {
-  letter-spacing: 1px;
-  font-size: 1.1rem;
+  letter-spacing: 1.2px;
+  font-size: .9rem;
   margin-top: 10px;
   position: absolute;
-  top: 5px;
+  top: 8px;
   left: 10px;
   transition: .2s ease-in-out;
   cursor: pointer;
 }
 
-label, input[type="submit"]{
-  text-shadow: 0 0 3.5px #09454bc7;
-}
 
 input[type="text"], input[type="password"]{
   width: 100%;
@@ -116,43 +139,46 @@ input[type="text"], input[type="password"]{
   padding-left: 10px;
   outline: none;
   border: 1px solid transparent;
-  background: #f1f1f12c;
+  background: #e0e0e033;
   transition: 0.2s;
   font-size: 1.1rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  border: 0.1px solid #a3a2a236;
+  border: 0.1px solid #a3a2a215;
 } 
 
 input[type="submit"] {
   border: none;
   background: linear-gradient(65deg, #16d9e7, #5ef9a4);
   width: 50%;
-  margin: 10px auto 0;
+  height: 50px;
+  margin: 20px auto 0;
   padding: 10px;
   border-radius: 150px;
   font-size: 1.2rem;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: 0.5s ease;
+  color: white;
+  font-weight: bold;
+  grid-area: sub;
 } 
 
 input[type="submit"]:hover {
   transform: translateX(2px);
-  background: #04ecbaab;
-  box-shadow: inset 4px 4px 4px #b0b0b0, inset -5px -4px 4px #ffffffce;
+  background: #0ebe98d8;
+  box-shadow: inset 1px 1px 1px #b0b0b0, inset -2px -2px 2px #ffffffce;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="text"]:focus, input[type="password"]:focus {
   border-radius: 15px;
-  background: #04ecbaab;
-  box-shadow: inset 4px 4px 4px #b0b0b0, inset -3px -3px 3px #ffffffce;
+  background: #a4f5e334;
+  box-shadow: inset 2px 2px 2px #b0b0b03a, inset -2px -2px 2px #ffffffce;
 }
 
 .error span{
   visibility: visible;
   font-family: 'Caveat', cursive;
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin-bottom: 10px;
 }
 
@@ -203,4 +229,28 @@ p, .progressRed {
 .visible{
   display: initial;
   color: brown
+}
+
+
+/*-------------------------------------RESPONSIVE DESIGN-------------------------------------*/
+
+@media screen and (max-width:650px){
+  form{
+    width: 300px;
+    height: 515px;
+    display: grid;
+    grid-template-rows: repeat(5, 70px);
+    grid-template-columns: 200px;
+    grid-template-areas: 
+    "i1 i1"
+    "i2 i2"
+    "i3 i3"
+    "i4 i4"
+    "sub sub";
+    row-gap: 30px;
+    padding: 40px 25px 30px;
+  }
+  input[type="submit"]{
+    margin-top: 10px;
+  }
 }
